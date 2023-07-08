@@ -1,43 +1,53 @@
 import 'package:flutter/material.dart';
 
-class Languages {
-  static final List<String> languages = [
-    'English',
-    'German',
-    'Portuguese',
-    'Chinese',
-  ];
-}
+import '../models/models_barrel.dart';
 
 class FlippStateProvider extends ChangeNotifier {
-  int _currentIndex = 0;
-  String _inputLanguage = '';
-  String _outputLanguage = '';
-  //String _outputLanguage = 'German';
-  int get currentIndex {
-    return _currentIndex;
+  int _currentTabIndex = 0;
+
+  bool _isSignedIn = false;
+  bool _hasOnboarded = false;
+  final _flippCache = FlippCache();
+
+  bool get isSignedIn {
+    return _isSignedIn;
   }
 
-  String get inputLanguage {
-    return _inputLanguage;
+  bool get hasOnboarded {
+    return _hasOnboarded;
   }
 
-  String get outputLanguage {
-    return _outputLanguage;
+  int get currentTabIndex {
+    return _currentTabIndex;
   }
 
   void changeTab(index) {
-    _currentIndex = index;
+    _currentTabIndex = index;
     notifyListeners();
   }
 
-  void selectInputLanguage(language) {
-    _inputLanguage = language;
+  Future<void> initialize() async {
+    _isSignedIn = await _flippCache.isUserSignedIn();
+    _hasOnboarded = await _flippCache.didCompleteOnboarding();
+  }
+
+  void signIn(String username, String password) async {
+    _isSignedIn = true;
+    await _flippCache.cacheUser();
     notifyListeners();
   }
 
-  void selectOutputLanguage(language) {
-    _outputLanguage = language;
+  void onboard() async {
+    _hasOnboarded = true;
+    await _flippCache.completeOnboarding();
+    notifyListeners();
+  }
+
+  void logout() async {
+    _isSignedIn = false;
+    _hasOnboarded = false;
+    await _flippCache.signOut();
+    await initialize();
     notifyListeners();
   }
 }

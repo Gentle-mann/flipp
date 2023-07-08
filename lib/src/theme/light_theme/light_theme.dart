@@ -1,6 +1,7 @@
 import 'package:flipp/src/theme/light_theme/input_decoration.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
 import '../themes_barrel.dart';
 
 class LightTheme {
@@ -12,7 +13,7 @@ class LightTheme {
       brightness: Brightness.light,
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateColor.resolveWith((states) {
-          return Colors.black;
+          return kPrimaryColor;
         }),
       ),
       appBarTheme: const AppBarTheme(
@@ -21,7 +22,7 @@ class LightTheme {
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
+        backgroundColor: kPrimaryColor,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.black,

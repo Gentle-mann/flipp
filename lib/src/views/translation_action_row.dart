@@ -1,4 +1,4 @@
-import 'package:flipp/src/tabs/text/views/views_barrel.dart';
+import 'package:flipp/src/screens/home/tabs/text/views/views_barrel.dart';
 import 'package:flutter/material.dart';
 
 import '../size_configuration.dart';

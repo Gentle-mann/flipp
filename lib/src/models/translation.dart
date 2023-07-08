@@ -15,13 +15,13 @@ class Translation {
       input:
           'Her majesty is my weapon and I would serve her honestly till the end of my life and I shall be loyal to her forever',
       output:
-          'This world is very small and it shall end unexpectedly for all of us. So do good and be happy, for one day, you shall diej',
+          'This world is very small and it shall end unexpectedly for all of us. So do good and be happy, for one day, you shall die',
     ),
     Translation(
       input:
           'Her majesty is my weapon and I would serve her honestly till the end of my life and I shall be loyal to her forever',
       output:
-          'This world is very small and it shall end unexpectedly for all of us. So do good and be happy, for one day, you shall diej',
+          'This world is very small and it shall end unexpectedly for all of us. So do good and be happy, for one day, you shall die',
     ),
   ];
 }
