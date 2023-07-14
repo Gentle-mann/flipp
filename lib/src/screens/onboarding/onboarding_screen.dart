@@ -25,11 +25,9 @@ class OnboardingScreen extends StatelessWidget {
                 onPressed: () {
                   Provider.of<FlippStateProvider>(context, listen: false)
                       .onboard();
-                  final index =
-                      Provider.of<FlippStateProvider>(context, listen: false)
-                          .currentTabIndex;
+
                   context.goNamed('home', pathParameters: {
-                    'tab': '$index',
+                    'tab': '0',
                   });
                 },
                 text: 'Skip',

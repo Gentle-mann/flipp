@@ -46,7 +46,9 @@ class _TranslationInputState extends State<TranslationInput> {
                 style: LightTextTheme.lightTextTheme.displaySmall,
                 decoration: const InputDecoration(
                   hintText: 'Enter the text you want to translate',
-                  border: UnderlineInputBorder(),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
             ),

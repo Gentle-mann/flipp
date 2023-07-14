@@ -2,4 +2,5 @@ function up or down in stateful widgets?
 pass values down or let each class fetch?
 import relative or actual?
 use class or declare independent constant field?
-fields need to be in class?
+
+WidgetsFlutterBinding.ensureInitialized();

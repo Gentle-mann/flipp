@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../models/models_barrel.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../provider/providers.dart';
 import '../../../../views/header.dart';
 import 'views/settings_card.dart';
@@ -29,13 +29,15 @@ class SettingsTab extends StatelessWidget {
         SettingsCard(
           iconSrc: 'assets/icons/cursor.svg',
           setting: 'Visit flipp.org',
-          onTap: () {},
+          onTap: () {
+            context.goNamed('flipp', pathParameters: {'tab': '3'});
+          },
         ),
         SettingsCard(
           iconSrc: 'assets/icons/logout.svg',
           setting: 'Logout',
           onTap: () {
-            Provider.of<FlippStateProvider>(context, listen: false).logout;
+            Provider.of<FlippStateProvider>(context, listen: false).signOut;
           },
         ),
       ],

@@ -30,14 +30,14 @@ class OnboardingPages extends StatelessWidget {
               OnboardingImage(
                 imageSrc: 'assets/images/text.png',
                 description:
-                    'Translate any text across 90+ languages\nFast. Nice. Easy',
+                    'Translate any text across 90+ languages\nFast. Nice. Easy.',
                 aspectRatio: 1 / 1,
               ),
               OnboardingImage(
                 imageSrc: 'assets/images/speech.png',
                 description:
-                    'Translate audio using Flipp.\nIt is seamless and smooth',
-                aspectRatio: 1 / 1,
+                    'Translate audio using Flipp.\nIt is seamless and smooth.',
+                aspectRatio: 12 / 10,
               ),
               OnboardingImage(
                 imageSrc: 'assets/images/like.jpeg',

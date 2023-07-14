@@ -33,7 +33,7 @@ class FlippStateProvider extends ChangeNotifier {
 
   void signIn(String username, String password) async {
     _isSignedIn = true;
-    await _flippCache.cacheUser();
+    //await _flippCache.cacheUser();
     notifyListeners();
   }
 
@@ -43,7 +43,7 @@ class FlippStateProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void logout() async {
+  void signOut() async {
     _isSignedIn = false;
     _hasOnboarded = false;
     await _flippCache.signOut();

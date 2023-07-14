@@ -42,8 +42,8 @@ class _SignInFormState extends State<SignInForm> {
                 email = value;
                 if (email.isNotEmpty) {
                   flippStateProvider.removeError(FlippErrors.kNullEmail);
-                } else if (formValidators.regExpEmailValidator
-                    .hasMatch(email)) {
+                }
+                if (formValidators.regExpEmailValidator.hasMatch(email)) {
                   flippStateProvider.removeError(FlippErrors.kInvalidEmail);
                 }
               },
@@ -67,7 +67,8 @@ class _SignInFormState extends State<SignInForm> {
                 password = value;
                 if (password.isNotEmpty) {
                   flippStateProvider.removeError(FlippErrors.kNullPassword);
-                } else if (password.length > 8) {
+                }
+                if (password.length > 8) {
                   flippStateProvider.removeError(FlippErrors.kShortPassword);
                 }
               },

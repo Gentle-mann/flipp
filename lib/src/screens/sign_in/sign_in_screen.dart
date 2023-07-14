@@ -69,9 +69,7 @@ class SignInScreen extends StatelessWidget {
                     const Text('Don\'t have an account yet?'),
                     TextButton(
                       onPressed: () {
-                        context.pushNamed(
-                          'signup',
-                        );
+                        context.pushNamed('signup');
                       },
                       child: Text(
                         'Sign up!',

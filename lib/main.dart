@@ -7,6 +7,7 @@ import 'src/routing/flipp_router.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final flippStateProvider = FlippStateProvider();
+  flippStateProvider.initialize();
   runApp(
     Flipp(flippStateProvider: flippStateProvider),
   );
@@ -16,7 +17,6 @@ class Flipp extends StatelessWidget {
   const Flipp({super.key, required this.flippStateProvider});
   final FlippStateProvider flippStateProvider;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     late final profileProvider = ProfileProvider();
@@ -43,20 +43,21 @@ class Flipp extends StatelessWidget {
           },
         ),
       ],
-      child:
-          Consumer<ProfileProvider>(builder: (context, profileProvider, child) {
-        final router = flippRouter.router;
-        ThemeData theme =
-            profileProvider.darkMode ? DarkTheme.theme() : LightTheme.theme();
-        return MaterialApp.router(
-          title: 'Flipp',
-          theme: theme,
-          debugShowCheckedModeBanner: false,
-          routerDelegate: router.routerDelegate,
-          routeInformationParser: router.routeInformationParser,
-          routeInformationProvider: router.routeInformationProvider,
-        );
-      }),
+      child: Consumer<ProfileProvider>(
+        builder: (context, profileProvider, child) {
+          final router = flippRouter.router;
+          ThemeData theme =
+              profileProvider.darkMode ? DarkTheme.theme() : LightTheme.theme();
+          return MaterialApp.router(
+            title: 'Flipp',
+            theme: theme,
+            debugShowCheckedModeBanner: false,
+            routerDelegate: router.routerDelegate,
+            routeInformationParser: router.routeInformationParser,
+            routeInformationProvider: router.routeInformationProvider,
+          );
+        },
+      ),
     );
   }
 }

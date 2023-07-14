@@ -1,31 +1,30 @@
-// import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:webview_flutter/webview_flutter.dart';
+class WebViewScreen extends StatefulWidget {
+  const WebViewScreen({super.key});
 
-// class WebViewScreen extends StatefulWidget {
-//   const WebViewScreen({super.key});
+  @override
+  WebViewScreenState createState() => WebViewScreenState();
+}
 
-//   @override
-//   WebViewScreenState createState() => WebViewScreenState();
-// }
+class WebViewScreenState extends State<WebViewScreen> {
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..loadRequest(
+      Uri.parse('https://flutter.dev'),
+    );
+  @override
+  void initState() {
+    super.initState();
+  }
 
-// class WebViewScreenState extends State<WebViewScreen> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     if (Platform.isAndroid) WebViewWidget.platform = SurfaceAndroidWebView();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('raywenderlich.com'),
-//       ),
-//       body: const WebView(
-//         initialUrl: 'https://www.raywenderlich.com/',
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: WebViewWidget(
+        controller: controller,
+      ),
+    );
+  }
+}

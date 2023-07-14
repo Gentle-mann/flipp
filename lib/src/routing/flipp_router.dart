@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../provider/providers.dart';
 import '../screens/screen_barrel.dart';
@@ -62,30 +63,32 @@ class FlippRouter {
                 builder: (context, state) {
                   return ProfileScreen(user: profileProvider.getUser);
                 }),
-            // GoRoute(
-            //     name: 'flipp',
-            //     path: '/flipp',
-            //     builder: (context, state) {
-            //       return const WebViewScreen();
-            //     }),
+            GoRoute(
+                name: 'flipp',
+                path: 'flipp',
+                builder: (context, state) {
+                  return const WebViewScreen();
+                }),
           ],
         ),
       ],
       redirect: (context, state) {
+        final index = Provider.of<FlippStateProvider>(context, listen: false)
+            .currentTabIndex;
         final isSignedIn = flippStateProvider.isSignedIn;
-        final isSigningIn = state.path == '/signin';
-        print('isSigningIn: $isSigningIn');
+        final isSigningIn = state.fullPath == '/signin';
+
         if (!isSignedIn) {
           return isSigningIn ? null : '/signin';
         }
         final hasOnboarded = flippStateProvider.hasOnboarded;
-        final isOnboarding = state.path == '/onboarding';
-        print('isOnboarding: $isOnboarding');
+
+        final isOnboarding = state.fullPath == '/onboarding';
         if (!hasOnboarded) {
           return isOnboarding ? null : '/onboarding';
         }
         if (isSigningIn || isOnboarding) {
-          return '/0';
+          return '/$index';
         }
         return null;
       });

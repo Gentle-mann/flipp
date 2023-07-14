@@ -14,13 +14,10 @@ class ChooseLanguages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: size * 2),
+    return SizedBox(
       width: double.infinity,
-      //height: size * 5,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //mainAxisSize: MainAxisSize.max,
         children: [
           const LanguageSelector(
             language: '',
